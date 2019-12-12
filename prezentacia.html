@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    
+	<head>
+	<title>პროექტი</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<style>
+		
+	* {
+	  box-sizing: border-box;
+	}
+	html {
+	  font-family: "Lucida Sans", sans-serif;
+	}
+	.main{
+	 width:100%;
+	 border: 1px solid green;
+	}
+	.header {
+	  background-color: #9933cc;
+	  color: #ffffff;
+	  padding: 15px;
+	}
+	.content {
+	  background-color: #ffffff;
+	  color: #000000;
+	  text-align:center
+	}
+
+	.footer {
+	  background-color: #6a54a7;
+	  color: #ffffff;
+	  text-align: center;
+	  font-size: 12px;
+	  padding: 15px;
+	}
+	h1,h3{
+	  text-align:center;
+	}
+	</style>
+	<link rel="stylesheet" href="registration.css"> 
+	<script src="tsignebi.js"></script>	
+	</head>
+	
+	<body>
+		<div class="main">
+			<div class="header">
+			<img src="" alt="თქვენი სურათი" title="თქვენი სურათი" 
+			style="max-width:100px;float:left;" >
+				<h1>კავკასიის უნივერსიტეტი<br>CU CTC 2141 ვებტექნოლოგიები 1.<br>სახელი და გვარი</h1>
+				
+			</div>
+			<div class="navbar" style="float:left;height:800px;">
+				<ul>
+					
+					<li><a href="#cv">cv</a></li>
+					<li><a href="#MyLibrery">ჩემი ბიბლიოთეკა</a></li>
+					<li>
+					  <a href="https://library.cu.edu.ge/opac/index.php" target="_blank">
+					    CU ბიბლიოთეკა
+					  </a>
+					</li>
+					<li><a href="#hobi">ჰობი</a></li>
+					
+					
+				</ul>
+			</div>
+
+			<div class="content" >
+				
+				<p id="cv">
+				  <h3>CV</h3>
+				   <h5>აქ განათავსეთ თქვენი CV(ფოტოსურათით)</h5>
+				  <hr>
+				</p>
+				<p id="MyLibrery">
+				  <h3>ჩემი ბიბლიოთეკა</h3>
+				  <h5>აღწერეთ თქვენი ოჯახის წიგნების ბაზა და დაწერეთ პროგრამა მათში, მითითებული პარამეტრებით ძებნის</h5>
+				  <form id="F_book" name="F_book">
+				    <table border=1 align="center">
+					  <tr>
+					    <td>ავტორი:</td>
+					    <td><input type="text" id="Autor" name="Autor"></td>
+					  </tr>
+					  <tr>
+					    <td>წიგნის დასახელება:</td>
+					    <td><input type="text" id="BookName" name="BookName"></td>
+					  </tr>
+					  <tr>
+					    <td>გამოცემის წელი:</td>
+					    <td><input type="text" id="Year" name="Year"></td>
+					  </tr>
+					  <tr>
+					    <td>ჟანრი:</td>
+					    <td><input type="text" id="janri" name="janri"></td>
+					  </tr>
+					  <tr>
+					    <td align="left">
+						 <input type="button" value="ReSet" onclick="document.getElementById('F_book').reset();">
+						</td>
+					    
+						<td align="right">
+						 <input type="button" value="ძებნა" onclick="found();">
+						</td>
+					  </tr>					
+					</table>
+				  </form>
+				  <p id="result" align="center"></p>
+				</p>
+				<script>
+				function found()
+				  {
+					Result = "სულ საცავში: " + Book.length + " წიგნი.<br>";
+					Result = Result + "<table border=1  style='font-size:12px;'>";
+					prntHead();
+					for( i = 0; i < Book.length; i++)
+					  {
+						if( document.getElementById("Autor").value.length == 0 )
+						  {}
+					    else
+						  {
+						    if( Book[i].avtori.indexOf(document.getElementById("Autor").value) == -1)
+							  {
+							    continue;
+							  }
+						  }
+						if( document.getElementById("BookName").value.length == 0 )
+						  {}
+						else
+						  {
+						    if( Book[i].dasaxeleba.indexOf(document.getElementById("BookName").value) == -1)
+							  {
+							    continue;
+							  }
+						  }
+						if( document.getElementById("Year").value.length == 0 )
+						  {}
+						else
+						  {
+							if( Book[i].GamocemisTseli != document.getElementById("Year").value)
+							  {
+							    continue;
+							  }
+						  }
+						Book[i].prntLn(i);
+					  }
+				    Result = Result + "</table>";
+					document.getElementById("result").innerHTML = Result;
+				  }
+				</script>
+				
+			<div class="footer" style="clear:both;">
+			footer
+			</div>
+			
+		</div>
+	</body>
+</html>
